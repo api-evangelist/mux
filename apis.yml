@@ -1,0 +1,92 @@
+aid: mux
+name: Mux
+description: >-
+  Mux is an API-first video platform that provides developer tools for video
+  streaming, on-demand video, live streaming, real-time video, and video
+  analytics, used to ingest, transcode, store, deliver, and measure video
+  inside applications without managing video infrastructure. The Mux platform
+  is delivered through two product families: Mux Video (ingest, asset
+  management, live streams, playback IDs, signed URLs, and Mux Player) and
+  Mux Data (QoE analytics for any HTML5 video player). All Mux REST APIs are
+  served from https://api.mux.com, authenticated via HTTP Basic auth using a
+  Mux Access Token ID and Secret, and fully described by an OpenAPI
+  specification.
+type: Index
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+tags:
+  - Video
+  - Streaming
+  - Live Streaming
+  - Video Analytics
+  - QoE
+  - Video On Demand
+  - Transcoding
+  - Mux Player
+url: >-
+  https://raw.githubusercontent.com/api-evangelist/mux/refs/heads/main/apis.yml
+created: '2026-05-11'
+modified: '2026-05-11'
+specificationVersion: '0.19'
+apis:
+  - aid: mux:video-api
+    name: Mux Video API
+    description: >-
+      REST API for ingesting, transcoding, storing, and delivering on-demand
+      and live video. Provides endpoints for direct uploads, assets, playback
+      IDs, signing keys, live streams, simulcast targets, transcription, and
+      webhooks. Authenticated via HTTP Basic auth using a Mux Access Token
+      ID and Secret.
+    humanURL: https://www.mux.com/docs/api-reference
+    baseURL: https://api.mux.com
+    tags:
+      - Video
+      - Streaming
+      - Live
+      - VOD
+      - Transcoding
+    properties:
+      - type: Documentation
+        url: https://www.mux.com/docs/api-reference
+      - type: OpenAPI
+        url: https://www.mux.com/api-spec.json
+      - type: Authentication
+        url: https://www.mux.com/docs/core/make-api-requests
+      - type: Getting Started
+        url: https://www.mux.com/docs/core/mux-fundamentals
+  - aid: mux:data-api
+    name: Mux Data API
+    description: >-
+      REST API for Mux Data, providing video Quality of Experience (QoE)
+      analytics across any HTML5 player. Endpoints cover environments,
+      filters, metrics, video views, exports, alerts, and real-time data.
+      Authenticated via HTTP Basic auth with a Mux Access Token ID and Secret.
+    humanURL: https://www.mux.com/docs/api-reference
+    baseURL: https://api.mux.com
+    tags:
+      - Video Analytics
+      - QoE
+      - Monitoring
+      - Mux Data
+    properties:
+      - type: Documentation
+        url: https://www.mux.com/docs/api-reference
+      - type: OpenAPI
+        url: https://www.mux.com/api-spec.json
+
+common:
+  - type: Website
+    url: https://www.mux.com
+  - type: Documentation
+    url: https://www.mux.com/docs
+  - type: GitHub Organization
+    url: https://github.com/muxinc
+  - type: OpenAPI
+    url: https://www.mux.com/api-spec.json
+  - type: Pricing
+    url: https://www.mux.com/pricing
+  - type: Sign Up
+    url: https://dashboard.mux.com/signup
+
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com
