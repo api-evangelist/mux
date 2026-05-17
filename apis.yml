@@ -51,7 +51,7 @@ apis:
         url: https://www.mux.com/api-spec.json
       - type: Authentication
         url: https://www.mux.com/docs/core/make-api-requests
-      - type: Getting Started
+      - type: GettingStarted
         url: https://www.mux.com/docs/core/mux-fundamentals
   - aid: mux:data-api
     name: Mux Data API
@@ -78,13 +78,13 @@ common:
     url: https://www.mux.com
   - type: Documentation
     url: https://www.mux.com/docs
-  - type: GitHub Organization
+  - type: GitHubOrganization
     url: https://github.com/muxinc
   - type: OpenAPI
     url: https://www.mux.com/api-spec.json
   - type: Pricing
     url: https://www.mux.com/pricing
-  - type: Sign Up
+  - type: SignUp
     url: https://dashboard.mux.com/signup
 
 maintainers:
