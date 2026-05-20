@@ -74,6 +74,8 @@ apis:
         url: https://www.mux.com/api-spec.json
 
 common:
+  - type: LinkedIn
+    url: https://www.linkedin.com/company/mux
   - type: Website
     url: https://www.mux.com
   - type: Documentation
