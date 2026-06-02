@@ -1,0 +1,153 @@
+aid: mux:asyncapi-review
+name: Mux AsyncAPI Review
+description: >-
+  Honest review of Mux's public real-time / event-driven surface area for the
+  purpose of producing an AsyncAPI 2.6 specification. After crawling the
+  publicly documented Mux developer resources, Mux does not expose any public
+  WebSocket APIs, MQTT topics, AMQP exchanges, SSE streams, or other
+  AsyncAPI-applicable channels. Mux's event-driven surface is limited to HTTP
+  webhooks delivered to customer endpoints, and its real-time / streaming
+  protocols (RTMP, RTMPS, SRT for ingest; HLS, DASH for playback) are media
+  delivery protocols rather than API protocols describable with AsyncAPI. The
+  Mux Real-Time Video product, which was the only Mux product family that
+  exposed bidirectional real-time semantics to end users (via WebRTC), was
+  deprecated on 2024-01-03 and is no longer available. Therefore no
+  mux-asyncapi.yml was produced.
+type: Review
+created: '2026-05-29'
+modified: '2026-05-29'
+specificationVersion: '0.19'
+
+review:
+  target: Mux public real-time / WebSocket API surface
+  outcome: no-public-websocket-api
+  spec_produced: false
+  spec_path: null
+  reviewer: Kin Lane
+  reviewed_on: '2026-05-29'
+
+findings:
+  - id: no-public-websocket
+    summary: >-
+      No public WebSocket endpoint is documented anywhere in the Mux developer
+      area. The Mux API reference exclusively documents REST/HTTP operations
+      against https://api.mux.com authenticated with HTTP Basic auth using a
+      Mux Access Token ID and Secret. There are no wss:// URLs, no subscribe
+      operations, no streaming channels, and no documented WebSocket clients
+      in the Mux SDKs.
+    evidence:
+      - https://www.mux.com/docs/api-reference
+      - https://www.mux.com/api-spec.json
+  - id: webrtc-product-deprecated
+    summary: >-
+      Mux Real-Time Video (the WebRTC-based product, marketed alongside Mux
+      Studio and powering examples such as the open-source Mux Meet app) was
+      deprecated on 2024-01-03. The deprecation notice is shown inline on
+      legacy Mux blog posts about real-time video, and Mux Real-Time Video no
+      longer appears in the current docs navigation or pricing. This removes
+      what had been Mux's only real-time, bidirectional client surface.
+    evidence:
+      - https://www.mux.com/blog/developing-real-time-video-without-all-the-meetings
+      - https://www.mux.com/video-glossary/webrtc
+  - id: no-webrtc-ingest
+    summary: >-
+      Mux's live streaming FAQ explicitly states "We currently do not support
+      direct WebRTC ingest to a Live Stream." Browser-based contributors are
+      directed to use RTMP-out tools (e.g., Zoom RTMP-out) instead. There is
+      consequently no signaling WebSocket exposed for WebRTC negotiation.
+    evidence:
+      - https://www.mux.com/docs/guides/live-streaming-faqs
+  - id: ingest-and-playback-are-media-protocols
+    summary: >-
+      Mux Video accepts ingest over RTMP, RTMPS, and SRT, and delivers
+      playback over HLS and DASH. These are media transport / streaming
+      protocols, not API protocols, and are not in scope for AsyncAPI 2.6
+      bindings (which cover ws, mqtt, amqp, kafka, sns, sqs, nats, jms,
+      http-sse, etc.). The single supported ingest URL is
+      rtmp://global-live.mux.com:5222/app keyed by the live stream's Stream
+      Key.
+    evidence:
+      - https://www.mux.com/docs/guides/live-streaming-faqs
+      - https://www.mux.com/docs/guides/start-live-streaming
+  - id: events-are-http-webhooks-only
+    summary: >-
+      Mux's only event-driven surface for customer applications is HTTP
+      webhooks. Mux POSTs lifecycle events (e.g., video.asset.created,
+      video.asset.ready, video.live_stream.active, video.upload.asset_created)
+      to a customer-supplied HTTPS URL. Webhooks are a one-way HTTP push
+      pattern and are conventionally modeled in OpenAPI 3.1 (webhooks object)
+      rather than AsyncAPI 2.6. They do not require an AsyncAPI spec.
+    evidence:
+      - https://www.mux.com/docs/core/listen-for-webhooks
+      - https://www.mux.com/docs/system/webhooks
+  - id: data-realtime-is-rest-polling
+    summary: >-
+      Mux Data exposes a "Real-Time" section in its REST API (e.g.,
+      /data/v1/realtime/dimensions, /data/v1/realtime/metrics,
+      /data/v1/realtime/timeseries). Despite the name, these are conventional
+      GET endpoints intended to be polled; they do not push, stream, or open
+      a persistent connection. They surface in the existing Mux OpenAPI
+      definition and need no AsyncAPI representation.
+    evidence:
+      - https://www.mux.com/docs/api-reference#data-realtime
+      - https://www.mux.com/api-spec.json
+
+protocols_checked:
+  - protocol: WebSocket (ws/wss)
+    documented: false
+  - protocol: MQTT
+    documented: false
+  - protocol: AMQP
+    documented: false
+  - protocol: Kafka
+    documented: false
+  - protocol: Server-Sent Events (SSE)
+    documented: false
+  - protocol: gRPC streaming
+    documented: false
+  - protocol: WebRTC (Mux Real-Time Video)
+    documented: deprecated-2024-01-03
+  - protocol: RTMP / RTMPS (ingest)
+    documented: true
+    note: media transport, not an API protocol
+  - protocol: SRT (ingest)
+    documented: true
+    note: media transport, not an API protocol
+  - protocol: HLS / DASH (playback)
+    documented: true
+    note: media delivery, not an API protocol
+  - protocol: HTTP Webhooks (outbound from Mux)
+    documented: true
+    note: one-way HTTP push; modeled via OpenAPI webhooks, not AsyncAPI
+
+sources_checked:
+  - url: https://www.mux.com/docs/
+    note: Top-level docs landing; no WebSocket references.
+  - url: https://www.mux.com/docs/api-reference
+    note: Full API reference; REST only.
+  - url: https://www.mux.com/api-spec.json
+    note: Public OpenAPI definition for the Mux REST API.
+  - url: https://www.mux.com/docs/guides/live-streaming-faqs
+    note: Confirms no WebRTC ingest, RTMP/RTMPS only.
+  - url: https://www.mux.com/docs/core/listen-for-webhooks
+    note: Webhook event listener guide.
+  - url: https://www.mux.com/docs/system/webhooks
+    note: Webhook system reference and event types.
+  - url: https://www.mux.com/blog/developing-real-time-video-without-all-the-meetings
+    note: Carries the 2024-01-03 deprecation notice for Mux Real-Time Video.
+  - url: https://www.mux.com/video-glossary/webrtc
+    note: Mux's editorial WebRTC explainer; no live product link.
+  - url: https://github.com/muxinc
+    note: Mux GitHub organization; SDKs are REST clients, no WebSocket clients.
+
+conclusion: >-
+  No AsyncAPI 2.6 specification is warranted for Mux at this time. Mux's
+  current public surface is well-modeled by its existing OpenAPI definition
+  (REST API) plus webhook documentation. Should Mux reintroduce a real-time
+  product (e.g., a WebRTC signaling channel, a live captioning WebSocket, or
+  an MQTT/SSE event stream), this review should be revisited and an
+  asyncapi/mux-asyncapi.yml produced at that time.
+
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com
