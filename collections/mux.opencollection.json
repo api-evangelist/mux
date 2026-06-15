@@ -1,0 +1,255 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Mux Video API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Assets",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List assets",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.mux.com/video/v1/assets",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List assets"
+        },
+        {
+          "info": {
+            "name": "Create an asset",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.mux.com/video/v1/assets",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create an asset"
+        },
+        {
+          "info": {
+            "name": "Retrieve an asset",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.mux.com/video/v1/assets/:ASSET_ID",
+            "params": [
+              {
+                "name": "ASSET_ID",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve an asset"
+        },
+        {
+          "info": {
+            "name": "Update an asset",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.mux.com/video/v1/assets/:ASSET_ID",
+            "params": [
+              {
+                "name": "ASSET_ID",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update an asset"
+        },
+        {
+          "info": {
+            "name": "Delete an asset",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.mux.com/video/v1/assets/:ASSET_ID",
+            "params": [
+              {
+                "name": "ASSET_ID",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete an asset"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Playback IDs",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create a playback ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.mux.com/video/v1/assets/:ASSET_ID/playback_ids",
+            "params": [
+              {
+                "name": "ASSET_ID",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a playback ID"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Direct Uploads",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List direct uploads",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.mux.com/video/v1/uploads"
+          },
+          "docs": "List direct uploads"
+        },
+        {
+          "info": {
+            "name": "Create a direct upload URL",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.mux.com/video/v1/uploads",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a direct upload URL"
+        },
+        {
+          "info": {
+            "name": "Retrieve a direct upload",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.mux.com/video/v1/uploads/:UPLOAD_ID",
+            "params": [
+              {
+                "name": "UPLOAD_ID",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve a direct upload"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Live Streams",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List live streams",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.mux.com/video/v1/live_streams"
+          },
+          "docs": "List live streams"
+        },
+        {
+          "info": {
+            "name": "Create a live stream",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.mux.com/video/v1/live_streams",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a live stream"
+        },
+        {
+          "info": {
+            "name": "Retrieve a live stream",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.mux.com/video/v1/live_streams/:LIVE_STREAM_ID",
+            "params": [
+              {
+                "name": "LIVE_STREAM_ID",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve a live stream"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
