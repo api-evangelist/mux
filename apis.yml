@@ -9,7 +9,7 @@ description: 'Mux is an API-first video platform that provides developer tools f
   All Mux REST APIs are served from https://api.mux.com, authenticated via HTTP Basic
   auth using a Mux Access Token ID and Secret, and fully described by an OpenAPI specification.'
 type: Index
-image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 tags:
 - Video
 - Streaming
