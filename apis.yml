@@ -68,6 +68,14 @@ apis:
   - type: OpenAPI
     url: https://www.mux.com/api-spec.json
 common:
+- type: TrustCenter
+  url: security/mux-trust-center.yml
+- type: VulnerabilityDisclosure
+  url: security/mux-vulnerability-disclosure.yml
+- type: DomainSecurity
+  url: security/mux-domain-security.yml
+- type: Authentication
+  url: authentication/mux-authentication.yml
 - type: LinkedIn
   url: https://www.linkedin.com/company/mux
 - type: Website
@@ -82,6 +90,8 @@ common:
   url: https://www.mux.com/pricing
 - type: Signup
   url: https://dashboard.mux.com/signup
+- type: Blog
+  url: https://www.mux.com/blog/rss.xml
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
