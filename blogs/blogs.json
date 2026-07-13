@@ -1,0 +1,21 @@
+{
+  "repo": "mux",
+  "feeds": [
+    {
+      "source": "https://www.mux.com/blog/rss.xml",
+      "feed_url": "https://www.mux.com/blog/rss.xml",
+      "title": "",
+      "saved": 0,
+      "method": "feed"
+    },
+    {
+      "source": "https://dashboard.mux.com/signup",
+      "feed_url": "https://dashboard.mux.com/signup",
+      "title": "",
+      "saved": 0,
+      "method": "none"
+    }
+  ],
+  "fetched": "2026-07-11T11:50:51Z",
+  "post_count": 11
+}
