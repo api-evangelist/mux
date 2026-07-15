@@ -68,6 +68,8 @@ apis:
   - type: OpenAPI
     url: https://www.mux.com/api-spec.json
 common:
+- type: AgenticAccess
+  url: agentic-access/mux-agentic-access.yml
 - type: TrustCenter
   url: security/mux-trust-center.yml
 - type: VulnerabilityDisclosure
