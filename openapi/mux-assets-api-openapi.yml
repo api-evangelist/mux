@@ -1,0 +1,97 @@
+openapi: 3.1.0
+info:
+  title: Mux Video Assets API
+  description: 'REST API for ingesting, transcoding, storing, and delivering on-demand
+
+    and live video. Provides endpoints for direct uploads, assets, playback
+
+    IDs, live streams, and related resources. Authenticated via HTTP Basic
+
+    auth using a Mux Access Token ID and Secret.
+
+    '
+  version: v1
+servers:
+- url: https://api.mux.com
+  description: Mux production API
+security:
+- basicAuth: []
+tags:
+- name: Assets
+  description: Manage video on-demand assets.
+paths:
+  /video/v1/assets:
+    get:
+      tags:
+      - Assets
+      summary: List assets
+      operationId: listAssets
+      parameters:
+      - in: query
+        name: limit
+        schema:
+          type: integer
+      - in: query
+        name: page
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: List of assets.
+    post:
+      tags:
+      - Assets
+      summary: Create an asset
+      operationId: createAsset
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '201':
+          description: Asset created.
+  /video/v1/assets/{ASSET_ID}:
+    parameters:
+    - in: path
+      name: ASSET_ID
+      required: true
+      schema:
+        type: string
+    get:
+      tags:
+      - Assets
+      summary: Retrieve an asset
+      operationId: getAsset
+      responses:
+        '200':
+          description: Asset details.
+    patch:
+      tags:
+      - Assets
+      summary: Update an asset
+      operationId: updateAsset
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '200':
+          description: Asset updated.
+    delete:
+      tags:
+      - Assets
+      summary: Delete an asset
+      operationId: deleteAsset
+      responses:
+        '204':
+          description: Asset deleted.
+components:
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic auth using a Mux Access Token ID (username) and Secret (password).
