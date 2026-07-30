@@ -9,7 +9,19 @@ description: 'Mux is an API-first video platform that provides developer tools f
   All Mux REST APIs are served from https://api.mux.com, authenticated via HTTP Basic
   auth using a Mux Access Token ID and Secret, and fully described by an OpenAPI specification.'
 type: Index
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/mux.png
 tags:
 - Video
 - Streaming
@@ -24,49 +36,78 @@ created: '2026-05-11'
 modified: '2026-05-11'
 specificationVersion: '0.19'
 apis:
-- aid: mux:video-api
-  name: Mux Video API
-  description: REST API for ingesting, transcoding, storing, and delivering on-demand
-    and live video. Provides endpoints for direct uploads, assets, playback IDs, signing
-    keys, live streams, simulcast targets, transcription, and webhooks. Authenticated
-    via HTTP Basic auth using a Mux Access Token ID and Secret.
+- aid: mux:mux-assets-api
+  name: Mux Assets API
+  description: Manage video on-demand assets.
   humanURL: https://www.mux.com/docs/api-reference
   baseURL: https://api.mux.com
   tags:
-  - Video
-  - Streaming
-  - Live
-  - VOD
-  - Transcoding
+  - Assets
   properties:
+  - type: OpenAPI
+    url: openapi/mux-assets-api-openapi.yml
   - type: Documentation
     url: https://www.mux.com/docs/api-reference
-  - type: OpenAPI
-    url: https://www.mux.com/api-spec.json
   - type: Authentication
     url: https://www.mux.com/docs/core/make-api-requests
   - type: GettingStarted
     url: https://www.mux.com/docs/core/mux-fundamentals
-  - url: graphql/mux-graphql.md
-    type: GraphQL
-- aid: mux:data-api
-  name: Mux Data API
-  description: REST API for Mux Data, providing video Quality of Experience (QoE)
-    analytics across any HTML5 player. Endpoints cover environments, filters, metrics,
-    video views, exports, alerts, and real-time data. Authenticated via HTTP Basic
-    auth with a Mux Access Token ID and Secret.
+  - type: GraphQL
+    url: graphql/mux-graphql.md
+- aid: mux:mux-direct-uploads-api
+  name: Mux Direct Uploads API
+  description: Create direct upload URLs and inspect upload status.
   humanURL: https://www.mux.com/docs/api-reference
   baseURL: https://api.mux.com
   tags:
-  - Video Analytics
-  - QoE
-  - Monitoring
-  - Mux Data
+  - Direct Uploads
   properties:
+  - type: OpenAPI
+    url: openapi/mux-direct-uploads-api-openapi.yml
   - type: Documentation
     url: https://www.mux.com/docs/api-reference
+  - type: Authentication
+    url: https://www.mux.com/docs/core/make-api-requests
+  - type: GettingStarted
+    url: https://www.mux.com/docs/core/mux-fundamentals
+  - type: GraphQL
+    url: graphql/mux-graphql.md
+- aid: mux:mux-live-streams-api
+  name: Mux Live Streams API
+  description: Create and manage live streams.
+  humanURL: https://www.mux.com/docs/api-reference
+  baseURL: https://api.mux.com
+  tags:
+  - Live Streams
+  properties:
   - type: OpenAPI
-    url: https://www.mux.com/api-spec.json
+    url: openapi/mux-live-streams-api-openapi.yml
+  - type: Documentation
+    url: https://www.mux.com/docs/api-reference
+  - type: Authentication
+    url: https://www.mux.com/docs/core/make-api-requests
+  - type: GettingStarted
+    url: https://www.mux.com/docs/core/mux-fundamentals
+  - type: GraphQL
+    url: graphql/mux-graphql.md
+- aid: mux:mux-playback-ids-api
+  name: Mux Playback IDs API
+  description: Manage playback IDs for assets.
+  humanURL: https://www.mux.com/docs/api-reference
+  baseURL: https://api.mux.com
+  tags:
+  - Playback IDs
+  properties:
+  - type: OpenAPI
+    url: openapi/mux-playback-ids-api-openapi.yml
+  - type: Documentation
+    url: https://www.mux.com/docs/api-reference
+  - type: Authentication
+    url: https://www.mux.com/docs/core/make-api-requests
+  - type: GettingStarted
+    url: https://www.mux.com/docs/core/mux-fundamentals
+  - type: GraphQL
+    url: graphql/mux-graphql.md
 common:
 - type: AgenticAccess
   url: agentic-access/mux-agentic-access.yml
