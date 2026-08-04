@@ -1,0 +1,20 @@
+{
+  "provider": "mux",
+  "sources": [
+    "mux-assets-api-openapi.yml",
+    "mux-direct-uploads-api-openapi.yml",
+    "mux-live-streams-api-openapi.yml",
+    "mux-playback-ids-api-openapi.yml"
+  ],
+  "outputs": [
+    "mux-assets-api-openapi.yml",
+    "mux-direct-uploads-api-openapi.yml",
+    "mux-live-streams-api-openapi.yml",
+    "mux-playback-ids-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
